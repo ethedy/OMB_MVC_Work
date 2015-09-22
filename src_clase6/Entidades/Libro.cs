@@ -33,7 +33,7 @@ namespace Entidades
     /// </summary>
     public string Autores { get; set; }
 
-    [Range(typeof(decimal), "0", "1500")]
+    [Range(typeof(decimal), "0,01", "1500")]
     public decimal? Precio { get; set; }
 
     public string PathImagen { get; set; }

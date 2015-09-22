@@ -26,6 +26,8 @@ namespace MvcOMB.Controllers
 
       //  ValidarModelo(nuevoLibro);
 
+      ValidarModeloSolo(nuevoLibro);
+      
       if (ModelState.IsValid)
       {
         try
@@ -60,7 +62,11 @@ namespace MvcOMB.Controllers
 
     private void ValidarModeloSolo(Libro libro)
     {
-      
+      if (ModelState.IsValidField("Titulo"))
+      {
+        if (libro.Titulo.ToUpper().Contains("XXX"))
+          ModelState.AddModelError("", "Esta libreria es bastante decente!!!");
+      }
     }
   }
 }
