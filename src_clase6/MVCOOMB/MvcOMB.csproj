@@ -21,6 +21,7 @@
     <IISExpressUseClassicPipelineMode />
     <AssemblyVersion>1.0.15258.106</AssemblyVersion>
     <TargetFrameworkProfile />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -212,6 +213,8 @@
     <Content Include="Views\MainMenu\Menu.cshtml" />
     <Content Include="Views\Listados\List.cshtml" />
     <Content Include="Views\Shared\DetalleLibro.cshtml" />
+    <Content Include="Views\Ingresos\Nuevo.cshtml" />
+    <Content Include="Views\Ingresos\Resultado.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -221,7 +224,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Ingresos\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Data\Data.csproj">
