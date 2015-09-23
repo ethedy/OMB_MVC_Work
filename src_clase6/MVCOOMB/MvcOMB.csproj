@@ -220,6 +220,7 @@
     <Content Include="Views\Shared\DetalleLibro.cshtml" />
     <Content Include="Views\Ingresos\Nuevo.cshtml" />
     <Content Include="Views\Ingresos\Resultado.cshtml" />
+    <Content Include="Views\MainMenu\EditarLibro.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

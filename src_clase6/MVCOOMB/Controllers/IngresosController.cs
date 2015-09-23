@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 using Entidades;
 using Data;
+using System.IO;
 
 namespace MvcOMB.Controllers
 {
@@ -20,9 +21,10 @@ namespace MvcOMB.Controllers
     }
 
     [HttpPost]
-    public ActionResult AddNew(Libro nuevoLibro)
+    public ActionResult AddNew(Libro nuevoLibro, HttpPostedFileBase imagen)
     {
       OMBContext ctx = DB.Contexto;
+      string imgFileDestino = null;
 
       //  ValidarModelo(nuevoLibro);
 
@@ -32,6 +34,19 @@ namespace MvcOMB.Controllers
       {
         try
         {
+          if (imagen != null)
+          {
+            imgFileDestino = Path.Combine(Server.MapPath("/Imagenes"), 
+              Path.GetFileName(imagen.FileName));
+
+            //FileStream dest = System.IO.File.Create(imgFileDestino);
+
+            imagen.SaveAs(imgFileDestino);
+
+            nuevoLibro.PathImagen = Path.Combine("/Imagenes", 
+              Path.GetFileName(imagen.FileName));
+          }
+
           ctx.Libros.Add(nuevoLibro);
           ctx.SaveChanges();
 
@@ -39,6 +54,9 @@ namespace MvcOMB.Controllers
         }
         catch (Exception ex)
         {
+          if (imgFileDestino != null)
+            System.IO.File.Delete(imgFileDestino);
+
           return new HttpUnauthorizedResult();
         }
       }

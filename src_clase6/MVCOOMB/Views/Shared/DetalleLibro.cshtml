@@ -11,10 +11,12 @@
         <div class="col-lg-4 col-md-6 col-sm-9">
           <h3>
             Nuestro Precio
-            <span class="label label-primary"> @( Model.Precio.HasValue ? Model.Precio.Value.ToString("c") : "") </span>
+            <span class="label label-primary">
+               @( Model.Precio.HasValue ? Model.Precio.Value.ToString("c") : "") 
+            </span>
           </h3>
         </div>
-
+        @Html.Action("EditarLibro", "MainMenu", new { entidad= Model})
       </div>
     </div>
   </div>
