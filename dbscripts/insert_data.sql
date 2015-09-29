@@ -6,6 +6,7 @@
   select * from Usuarios_Perfiles
 
   select * from Perfiles
+  select * from Libros
 */
 --  Tabla Personas
 --

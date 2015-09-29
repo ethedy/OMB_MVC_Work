@@ -18,6 +18,8 @@
 
     <script src="~/Scripts/jquery-2.1.4.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
 
     <style>
       .divTable {
@@ -45,6 +47,8 @@
         background-color: pink;
       }
     </style>
+
+    @RenderSection("Scripts", false)
   </head>
 
   <body>

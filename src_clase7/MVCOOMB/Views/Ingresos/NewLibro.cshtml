@@ -5,6 +5,29 @@
   Layout = "~/Views/_MasterOMB.cshtml";
 }
 
+@section Scripts
+{
+  <script>
+
+    $(function () {
+      $.validator.addMethod("noesXXX", function(value, elem, args) {
+          //  value --> valor actual
+          //  elem --> elemento actual
+          //  args --> argumentos
+          if (value.toUpperCase().indexOf("XXX") >= 0)
+            return false;
+          else
+            return true;
+        },
+        "El titulo del libro debe ser apropiado para su venta en la tienda"
+      );
+
+      $("#Titulo").rules("add", { noesXXX: 0 });
+    });
+
+  </script>
+}
+
 <div class="row">
   <div class="col-md-7 col-md-offset-3">
     <div class="panel panel-primary">
@@ -12,14 +35,16 @@
         <h3>Ingresar un nuevo libro</h3>
       </div>
 
-      @using (Html.BeginForm("Agregar", "Ingresos"))
+      @using (Html.BeginForm("Agregar", "Ingresos", FormMethod.Post, new { enctype = "multipart/form-data" }))
       {
-        @Html.ValidationSummary()
+        @Html.ValidationSummary(true, "Lista de reglas incumplidas (sin errores de tipeo)", 
+          new { @class = "alert alert-warning" }, "h4")
 
         <div class="panel-body">
           <div class="form-group col-md-6">
             @Html.LabelFor(m => m.ISBN13, "ISBN (13) Nuevo Sistema")
             @Html.TextBoxFor(m => m.ISBN13, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.ISBN13, null, new { @class = "label label-danger" })
           </div>
 
           <div class="form-group col-md-6">
@@ -30,21 +55,34 @@
           <div class="form-group">
             @Html.LabelFor(m => m.Titulo, new { @class = "control-label" })
             @Html.TextBoxFor(m => m.Titulo, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Titulo, null, new { @class = "label label-danger" })
           </div>
 
           <div class="form-group">
             @Html.LabelFor(m => m.Editorial, new { @class = "control-label" })
             @Html.TextBoxFor(m => m.Editorial, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Editorial, null, new { @class = "label label-danger" })
           </div>
 
           <div class="form-group">
             @Html.LabelFor(m => m.Autores)
             @Html.TextAreaFor(m => m.Autores, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Autores, null, new { @class = "label label-danger" })
           </div>
 
           <div class="form-group">
             @Html.LabelFor(m => m.Precio)
-            @Html.TextBoxFor(m => m.Precio, new { @class = "form-control" })
+            @Html.TextBoxFor(m => m.Precio, new {@class = "form-control"})
+            @Html.ValidationMessageFor(m => m.Precio, null, new {@class = "label label-danger"})
+          </div>
+
+          <div class="form-group">
+            <div style="position: relative; width: 250px;">
+              <a class="btn btn-primary btn-block">Elegir imagen para el libro...
+                <input type="file" style="width: 100% ; position: absolute; top: 0; left: 0; opacity: 0; z-index: 2; background-color: transparent; color: transparent;" 
+                       class="form-control" name="imagen" />
+              </a>
+            </div>
           </div>
 
         </div>
