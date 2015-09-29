@@ -25,7 +25,7 @@ namespace Data
     //  UPDATE: lo agregue para poder realizar las pruebas de crear nuevos usuarios o agregar perfiles a usuarios existentes
 
     public OMBContext()
-      : base("Server=CLUE;Database=OMB;Trusted_Connection=true")
+      : base("Server=VALIS;Database=OMB;Trusted_Connection=true")
     {
     }
 

@@ -18,6 +18,8 @@
 
     <script src="~/Scripts/jquery-2.1.4.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 
     <style>
       .divTable {
@@ -39,7 +41,13 @@
         font-family: "Segoe UI";
         font-size: 24pt;
       }
+
+      .input-validation-error {
+        background-color: pink;
+      }
     </style>
+
+    @RenderSection("Scripts", false)c1
   </head>
 
   <body>

@@ -4,16 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.ComponentModel.DataAnnotations;
+
 namespace Entidades
 {
   public class Libro
   {
+    [Required(ErrorMessage = "El campo ISBN debe estar completo", AllowEmptyStrings = false)]
+    [StringLength(13, MinimumLength = 13, ErrorMessage = "El ISBN debe ser exactamente de 13 caracteres")]
     public string ISBN13 { get; set; }
 
     public string ISBN10 { get; set; }
 
     public string Editorial { get; set; }
 
+    [Required(ErrorMessage = "Alguna vez viste un libro sin titulo???")]
     public string Titulo { get; set; }
 
     public string Subtitulo { get; set; }

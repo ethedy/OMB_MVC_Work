@@ -44,6 +44,7 @@ namespace MvcOMB.Models
             break;
 
           case "AsistenciaCliente":
+          case "SysAdmin":
             result = new List<string>() {"Listados", "Busquedas"};
             break;
         }
@@ -72,6 +73,7 @@ namespace MvcOMB.Models
             break;
 
           case "AsistenciaCliente":
+          case "SysAdmin":
             result = new List<MenuInfo>()
             {
               new MenuInfo() { Etiqueta = "Listados", Accion = "List", Controlador = "Listados"},
